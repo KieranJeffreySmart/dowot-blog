@@ -4,7 +4,6 @@ import { Link } from 'gatsby'
 import get from 'lodash/get'
 import { graphql } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
-
 import Bio from '../components/Bio'
 import Layout from '../components/layout'
 import { rhythm, scale } from '../utils/typography'
@@ -24,6 +23,14 @@ class BlogPostTemplate extends React.Component {
       <Layout location={location}>
         <style>
           {`          
+          .modal-image {
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+          }
+          
+          .modal-image:hover {opacity: 0.7;}
+
           /* The Modal (background) */
           .modal {
             display: none; /* Hidden by default */
@@ -65,6 +72,7 @@ class BlogPostTemplate extends React.Component {
             -webkit-animation-duration: 0.6s;
             animation-name: zoom;
             animation-duration: 0.6s;
+            width: 100%;
           }
 
           @-webkit-keyframes zoom {
@@ -109,9 +117,6 @@ class BlogPostTemplate extends React.Component {
               margin-left: ${rhythm(-3 / 4)};
               height: ${rhythm(13)};
             }
-            .modal-content {
-              width: 100%;
-            }
           }
         `}
         </style>
@@ -154,35 +159,11 @@ class BlogPostTemplate extends React.Component {
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
         
-        <div id="myModal" class="modal">
-          <span id="modal-close" class="close">&times;</span>
-          <img class="modal-content" id="img01" />
+        <div id="myModal" className="modal">
+          <span id="modal-close" className="close">&times;</span>
+          <img className="modal-content" id="img01" />
           <div id="caption"></div>
         </div>
-        <script>{`
-          // Get the modal
-          var modal = document.getElementById("myModal");
-
-          // Get the image and insert it inside the modal - use its "alt" text as a caption
-          var images = document.getElementsByClassName("modal-image");
-          images.forEach((img, i) => {
-            var modalImg = document.getElementById("img01");
-            var captionText = document.getElementById("caption");
-            img.onclick = function(){
-              modal.style.display = "block";
-              modalImg.src = this.src;
-              captionText.innerHTML = this.alt;
-            }
-          }
-
-          // Get the <span> element that closes the modal
-          var span = document.getElementById("modal-close");
-
-          // When the user clicks on <span> (x), close the modal
-          span.onclick = function() { 
-            modal.style.display = "none";
-          }`}
-        </script>
         <hr
           style={{
             marginBottom: rhythm(1),
@@ -215,6 +196,25 @@ class BlogPostTemplate extends React.Component {
             </li>
           )}
         </ul>
+        <Helmet><script>{` alert("looking for images")
+        var modal = document.getElementById("myModal");
+        var images = document.getElementsByClassName("modal-image");
+        alert("found " +images.length+ " images")
+        for(var i = 0; i < images.length; i++) {
+          modalImg = document.getElementById("img01");
+          var captionText = document.getElementById("caption");
+          var img = images[i]
+          img.onclick = function(){
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+          }
+        }
+        var span = document.getElementById("modal-close");          
+        span.onclick = function() { 
+            modal.style.display = "none";
+        }`}
+          </script></Helmet>
       </Layout>
     )
   }
