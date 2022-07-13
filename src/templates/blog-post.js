@@ -196,10 +196,10 @@ class BlogPostTemplate extends React.Component {
             </li>
           )}
         </ul>
-        <Helmet><script>{` alert("looking for images")
+        <Helmet><script>{`
         var modal = document.getElementById("myModal");
         var images = document.getElementsByClassName("modal-image");
-        alert("found " +images.length+ " images")
+
         for(var i = 0; i < images.length; i++) {
           modalImg = document.getElementById("img01");
           var captionText = document.getElementById("caption");
@@ -210,6 +210,7 @@ class BlogPostTemplate extends React.Component {
             captionText.innerHTML = this.alt;
           }
         }
+        
         var span = document.getElementById("modal-close");          
         span.onclick = function() { 
             modal.style.display = "none";
