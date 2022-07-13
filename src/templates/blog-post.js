@@ -51,7 +51,7 @@ class BlogPostTemplate extends React.Component {
             margin: auto;
             display: block;
             width: 80%;
-            max-width: 700px;
+            max-width: 80%;
           }
 
           /* Caption of Modal Image */
@@ -59,11 +59,10 @@ class BlogPostTemplate extends React.Component {
             margin: auto;
             display: block;
             width: 80%;
-            max-width: 700px;
+            max-width: 80%;
             text-align: center;
             color: #ccc;
             padding: 10px 0;
-            height: 150px;
           }
 
           /* Add Animation */
@@ -210,7 +209,7 @@ class BlogPostTemplate extends React.Component {
             captionText.innerHTML = this.alt;
           }
         }
-        
+
         var span = document.getElementById("modal-close");          
         span.onclick = function() { 
             modal.style.display = "none";
