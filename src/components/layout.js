@@ -66,20 +66,26 @@ export default ({ children, location }) => (
                 right: 0,
                 top: rhythm(4),
                 marginTop: '0',
-                height: rhythm(2.5),
-                background: 'black'
+                height: rhythm(2.5)
               }}
             >
-              <Link
-                style={{
-                  boxShadow: 'none',
-                  textDecoration: 'none',
-                  color: 'white'
+              <span style={{
+              background: 'rgba(0, 0, 0, 0.5)',
+              padding: '5px'
                 }}
-                to={'/'}
               >
-                {siteTitle}
-              </Link>
+                <Link
+                  style={{
+                    opacity: 1,
+                    boxShadow: 'none',
+                    textDecoration: 'none',
+                    color: 'white'
+                  }}
+                  to={'/'}
+                >
+                  {siteTitle}
+                </Link>
+              </span>
             </h1>
           </BackgroundImage>
         )
