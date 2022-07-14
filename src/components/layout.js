@@ -67,13 +67,14 @@ export default ({ children, location }) => (
                 top: rhythm(4),
                 marginTop: '0',
                 height: rhythm(2.5),
+                background: 'black'
               }}
             >
               <Link
                 style={{
                   boxShadow: 'none',
                   textDecoration: 'none',
-                  color: 'white',
+                  color: 'white'
                 }}
                 to={'/'}
               >
