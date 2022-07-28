@@ -39,4 +39,13 @@ module.exports = {
       },
     },
   ],
+    siteMetadata: {
+    title: `Do Wot Blog`,
+    description: `A blog for sharing my experiences in System Development Life-Cycles`,
+    twitterUsername: `@kieran_smart2`,
+    image: `/gatsby-icon.png`,
+    siteUrl: `https://dowot.gtsb.io`,
+    author: `Kieran Jeffrey-Smart`,
+    keywords: [`sdlc`]
+  },
 }

@@ -6,6 +6,7 @@ import { graphql } from 'gatsby'
 
 import Bio from '../components/Bio'
 import Layout from '../components/layout'
+import SEO from "../components/seo"
 import { rhythm } from '../utils/typography'
 
 class BlogIndex extends React.Component {
@@ -20,6 +21,7 @@ class BlogIndex extends React.Component {
 
     return (
       <Layout location={location}>
+        <SEO title="Do Wot? Blog" />
         <Helmet title={siteTitle} />
         <Bio settings={author} />
         {posts.map(({ node }) => {

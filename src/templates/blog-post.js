@@ -5,6 +5,7 @@ import get from 'lodash/get'
 import { graphql } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 import Bio from '../components/Bio'
+import SEO from "../components/seo"
 import Layout from '../components/layout'
 import { rhythm, scale } from '../utils/typography'
 
@@ -18,6 +19,8 @@ class BlogPostTemplate extends React.Component {
     const author = get(this, 'props.data.cosmicjsSettings.metadata')
     const location = get(this, 'props.location')
     const { previous, next } = this.props.pageContext
+
+    const image = post.metadata.hero.imgix_url
 
     return (
       <Layout location={location}>
@@ -119,7 +122,14 @@ class BlogPostTemplate extends React.Component {
           }
         `}
         </style>
+        <SEO
+          title={post.title}
+          description={post.description}
+          imageUrl={image}
+          pathname={this.props.location.pathname}
+        />
         <Helmet title={`${post.title} | ${siteTitle}`} />
+        
         <div
           style={{
             marginTop: rhythm(1.4),
@@ -230,6 +240,7 @@ export const pageQuery = graphql`
       title
       created(formatString: "MMMM DD, YYYY")
       metadata {
+        description
         hero {
           local {
             childImageSharp {
@@ -238,6 +249,7 @@ export const pageQuery = graphql`
               }
             }
           }
+          imgix_url
         }
       }
     }
